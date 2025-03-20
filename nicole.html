@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contador de Tempo de Namoro</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* Fundo preto */
+      color: #fff;            /* Texto branco */
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .fotoCasal {
+      width: 50%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-weight: normal;
+      font-size: 1.5rem;
+    }
+
+    .linhaVermelha {
+      width: 80%;
+      height: 2px;
+      margin: 20px auto;
+      background-color: red;
+    }
+
+    .contador {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .textoMensagem {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Ajuste o 'src' para o caminho da foto -->
+    <img 
+      class="fotoCasal" 
+      src="nicole.jpg" 
+      alt="Foto do casal se beijando" 
+    />
+    
+
+    <h1>EU TE AMO HÁ:</h1>
+
+    <div class="contador" id="contadorTempo"></div>
+
+    <div class="linhaVermelha"></div>
+
+    <p class="textoMensagem">
+      Dois anos ao seu lado e tenho cada vez mais certeza de que fiz a melhor escolha. 
+      A cada dia, meu amor por você só cresce, junto com a admiração e a felicidade 
+      de te ter comigo. Obrigada por ser meu companheiro de vida e meu amor. 
+      Mal posso esperar por tudo que ainda vamos viver juntos, porque sei que isso 
+      é só o começo. Te amo pra sempre!
+    </p>
+  </div>
+
+  <script>
+    // Defina aqui a data de início do namoro (ano-mês-dia).
+    // Exemplo: 2021-04-05 (05 de abril de 2021)
+    const dataInicioNamoro = new Date("2023-04-05");
+
+    function atualizarContador() {
+      const hoje = new Date();
+      const diffEmMs = hoje - dataInicioNamoro;
+
+      // Calculando os anos, meses, dias, horas, minutos e segundos
+      const anos = Math.floor(diffEmMs / (1000 * 60 * 60 * 24 * 365.25));
+      const meses = Math.floor(diffEmMs / (1000 * 60 * 60 * 24 * 30.4375)) % 12;
+      const dias = Math.floor(diffEmMs / (1000 * 60 * 60 * 24)) % 30;
+      const horas = Math.floor((diffEmMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) % 24;
+      const minutos = Math.floor((diffEmMs % (1000 * 60 * 60)) / (1000 * 60)) % 60;
+      const segundos = Math.floor((diffEmMs % (1000 * 60)) / 1000) % 60;
+
+      // Exibe o contador no formato desejado
+      document.getElementById("contadorTempo").innerHTML = 
+        `${anos} Ano(s), ${meses} Mês(es), ${dias} Dia(s), ${horas} Hora(s), ${minutos} Minuto(s), ${segundos} Segundo(s)`;
+    }
+
+    // Atualiza o contador de tempo a cada segundo (1000ms)
+    setInterval(atualizarContador, 1000);
+  </script>
+
+</body>
+</html>
+
